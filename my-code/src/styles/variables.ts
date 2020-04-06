@@ -20,6 +20,7 @@ export const LAYOUT = {
 
 export const TRANSITION = {
   LINEAR: 'all 200ms linear',
+  SMOOTH: 'all 1s ease-in-out',
 };
 
 export const BORDER = {

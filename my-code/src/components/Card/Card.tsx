@@ -1,4 +1,4 @@
-import { FONT, COLORS, BORDER } from '../../styles/variables';
+import { FONT, COLORS, BORDER, TRANSITION } from '../../styles/variables';
 
 const Card = (props) => {
   return (
@@ -6,13 +6,19 @@ const Card = (props) => {
       <span className="Card__icon"></span>
       <style jsx>{`
         .Card {
+          cursor: pointer;
           position: relative;
           height: 270px;
           width: 200px;
           border-radius: ${BORDER.RADIUS};
           // box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.2);
-          background: red;
-          // background: url('') linear-gradient(to top, ${COLORS.DARK}, rgba(0, 0, 0, 0) 30%);
+          background: url('${props.card.Poster}'), linear-gradient(to top, red, rgba(0,0,0, 0));
+          background-size: cover;
+          transition: ${TRANSITION.SMOOTH}
+        }
+
+        .Card:hover {
+          transform: scale(1.05)
         }
 
         .Card::before {

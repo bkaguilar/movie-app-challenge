@@ -4,7 +4,7 @@ import Header from '@components/Header/Header';
 const Layout = (props) => {
   return (
     <>
-      <Header />
+      <Header test={props.test} />
       {props.children}
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');

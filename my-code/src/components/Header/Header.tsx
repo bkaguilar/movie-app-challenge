@@ -1,10 +1,11 @@
 import { FONT, COLORS, BORDER } from '../../styles/variables';
+import { element } from 'prop-types';
 
 const Header = (props) => {
   return (
     <header className="Header">
       <figure className="Header__figure"></figure>
-      <input type="text" className="Header__input" placeholder="Search movies..." />
+      <input type="text" className="Header__input" onInput={props.test} placeholder="Search movies..." />
       <style jsx>{`
         .Header {
           height: 120px;
