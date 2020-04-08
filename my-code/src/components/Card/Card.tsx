@@ -1,6 +1,12 @@
 import { FONT, COLORS, BORDER, TRANSITION } from '../../styles/variables';
+import { DEFAULT_POSTER_PLACEHOLDER } from 'src/constants';
 
-const Card = (props) => {
+type CardProps = {
+  card: any;
+};
+
+const Card: React.FC<CardProps> = ({ card }) => {
+  let posterPlaceholder = card.Poster === 'N/A' ? DEFAULT_POSTER_PLACEHOLDER : card.Poster;
   return (
     <article className="Card">
       <span className="Card__icon"></span>
@@ -12,7 +18,7 @@ const Card = (props) => {
           width: 200px;
           border-radius: ${BORDER.RADIUS};
           // box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.2);
-          background: url('${props.card.Poster}'), linear-gradient(to top, red, rgba(0,0,0, 0));
+          background: url('${posterPlaceholder}');
           background-size: cover;
           transition: ${TRANSITION.SMOOTH}
         }
