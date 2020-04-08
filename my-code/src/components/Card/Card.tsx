@@ -6,7 +6,7 @@ type CardProps = {
 };
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  let posterPlaceholder = card.Poster === 'N/A' ? DEFAULT_POSTER_PLACEHOLDER : card.Poster;
+  const posterPlaceholder = card.Poster === 'N/A' ? DEFAULT_POSTER_PLACEHOLDER : card.Poster;
   return (
     <article className="Card">
       <span className="Card__icon"></span>
