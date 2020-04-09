@@ -2,6 +2,7 @@ import React, { useReducer, useState } from 'react';
 import Link from 'next/link';
 import Cover from '../assets/cinema-svg.svg';
 import Warning from '../assets/warning.svg';
+import { BORDER, COLORS } from '../styles/variables';
 import { API_URL, API_KEY } from '../constants';
 import Layout from '@components/Layout/Layout';
 import Card from '@components/Card/Card';
@@ -87,14 +88,14 @@ const Home: React.FC = () => {
         .Home__error__text {
           width: 70%;
           margin: 0 auto;
-          border-radius: 6px;
-          color: #f9a826;
+          border-radius: ${BORDER.RADIUS};
+          color: ${COLORS.MAIN_HIGHLIGHT};
           text-align: center;
           font-weight: bold;
-          font-size: 1.6em;
+          font-size: 1.4em;
           margin-top: 40px;
-          padding: 20px;
-          background: rgba(249, 168, 38, 0.2);
+          padding: 10px;
+          background: ${COLORS.MAIN_HIGHLIGHT_ALPHA};
         }
       `}</style>
     </Layout>

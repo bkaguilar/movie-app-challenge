@@ -1,5 +1,5 @@
 export const COLORS = {
-  MAIN_HIGHLIGHT: '#FF9F1C',
+  MAIN_HIGHLIGHT: '#f9a826',
   MAIN_NEGATIVE: '#FF4040',
   MAIN_ACTIVE: '#2EC4B6',
   DISABLED: '#353F4C',
@@ -8,6 +8,9 @@ export const COLORS = {
   DARK: '#0A1014',
   GREY: '#1B2329',
   WHITE: '#FFF',
+
+  MAIN_HIGHLIGHT_ALPHA: 'rgba(249, 168, 38, 0.1)',
+  DARK_ALPHA: 'rgba(122, 140, 153, 0.4)',
 };
 
 export const FONT = {

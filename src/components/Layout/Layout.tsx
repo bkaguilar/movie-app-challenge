@@ -22,19 +22,23 @@ const Layout: React.FC<LayoutProps> = ({ children, handlerInput }) => {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
+
         *::-moz-selection {
-          background: ${COLORS.MAIN_ACTIVE};
+          color: ${COLORS.WHITE};
+          background: ${COLORS.DARK};
         }
+
         *::selection {
-          background: ${COLORS.MAIN_ACTIVE};
+          color: ${COLORS.WHITE};
+          background: ${COLORS.DARK};
         }
 
         body {
           max-width: ${LAYOUT.MAX_WIDTH};
           margin: 0 auto;
           line-height: 1.6;
-          background: ${COLORS.DARK};
-          color: ${COLORS.WHITE};
+          background: ${COLORS.WHITE};
+          color: ${COLORS.DARK};
         }
 
         a {
