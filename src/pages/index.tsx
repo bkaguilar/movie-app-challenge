@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from 'react';
 import Link from 'next/link';
+import { ReactComponent as Cover } from '../assets/cinema.svg';
 import { API_URL, API_KEY } from '../constants';
 import Layout from '@components/Layout/Layout';
 import Card from '@components/Card/Card';
@@ -58,7 +59,9 @@ const Home: React.FC = () => {
             ))}
           </>
         ) : (
-          <figure className="Home__figure">img</figure>
+          <figure className="Home__figure">
+            <Cover />
+          </figure>
         )}
       </main>
       <style jsx>{`
@@ -72,9 +75,8 @@ const Home: React.FC = () => {
           place-self: center;
           grid-column: 2 / 5;
           grid-row: 1 / lastline;
-          height: 300px;
+          height: 500px;
           width: 100%;
-          background: black;
         }
       `}</style>
     </Layout>
