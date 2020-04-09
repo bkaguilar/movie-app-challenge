@@ -1,6 +1,7 @@
 import React, { useReducer, useState } from 'react';
 import Link from 'next/link';
-import { ReactComponent as Cover } from '../assets/cinema.svg';
+import Cover from '../assets/cinema-svg.svg';
+import Warning from '../assets/warning.svg';
 import { API_URL, API_KEY } from '../constants';
 import Layout from '@components/Layout/Layout';
 import Card from '@components/Card/Card';
@@ -47,7 +48,10 @@ const Home: React.FC = () => {
         {isLoading ? (
           <figure className="Spinner">Loading....</figure>
         ) : errorMessage && search ? (
-          <p className="Home__error">{errorMessage}</p>
+          <figure className="Home__error">
+            <Warning height="100%" width="100%" />
+            <p className="Home__error__text">{errorMessage}</p>
+          </figure>
         ) : search ? (
           <>
             {movies.map((movie: { Title: string }, index: number) => (
@@ -60,7 +64,7 @@ const Home: React.FC = () => {
           </>
         ) : (
           <figure className="Home__figure">
-            <Cover />
+            <Cover height="100%" width="100%" />
           </figure>
         )}
       </main>
@@ -71,12 +75,26 @@ const Home: React.FC = () => {
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         }
 
-        .Home__figure {
+        .Home__figure,
+        .Home__error {
           place-self: center;
           grid-column: 2 / 5;
           grid-row: 1 / lastline;
-          height: 500px;
+          height: 400px;
           width: 100%;
+        }
+
+        .Home__error__text {
+          width: 70%;
+          margin: 0 auto;
+          border-radius: 6px;
+          color: #f9a826;
+          text-align: center;
+          font-weight: bold;
+          font-size: 1.6em;
+          margin-top: 40px;
+          padding: 20px;
+          background: rgba(249, 168, 38, 0.2);
         }
       `}</style>
     </Layout>
