@@ -17,14 +17,14 @@ const Card: React.FC<CardProps> = ({ card }) => {
           height: 270px;
           width: 200px;
           border-radius: ${BORDER.RADIUS};
-          // box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.4);
           background: url('${posterPlaceholder}');
           background-size: cover;
           transition: ${TRANSITION.SMOOTH};
         }
 
         .Card:hover {
-          transform: scale(1.05)
+          transform: scale(1.05);
         }
 
         .Card::before {
