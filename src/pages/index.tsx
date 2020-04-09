@@ -3,21 +3,7 @@ import Link from 'next/link';
 import { API_URL, API_KEY } from '../constants';
 import Layout from '@components/Layout/Layout';
 import Card from '@components/Card/Card';
-import { reducer } from '../reducer';
-
-interface Istate {
-  isLoading: boolean;
-  movies: [];
-  errorMessage: null | string;
-  page: number;
-}
-
-const initialState: Istate = {
-  isLoading: false,
-  movies: [],
-  errorMessage: null,
-  page: 1,
-};
+import { reducer, initialState } from '../reducer';
 
 const Home: React.FC = () => {
   const [search, setSearch] = useState('');

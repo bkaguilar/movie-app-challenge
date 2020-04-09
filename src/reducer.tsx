@@ -1,17 +1,11 @@
-import React from 'react';
+import { Istate, Iaction } from './types/reduce';
 
-interface Istate {
-  isLoading: boolean;
-  movies: [];
-  errorMessage: null | string;
-  page: number;
-}
-
-interface Iaction {
-  type: string;
-  payload?: [];
-  error?: string;
-}
+export const initialState: Istate = {
+  movies: [],
+  isLoading: false,
+  errorMessage: null,
+  page: 1,
+};
 
 export const reducer = (state: Istate, action: Iaction): Istate => {
   switch (action.type) {
