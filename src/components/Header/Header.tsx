@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ handlerInput }) => {
           font-family: 'Bitter', serif;
           font-size: 4vmax;
           line-height: 1;
-          width: 60%;
+          width: 70%;
           margin: 50px auto 20px auto;
           padding: 20px;
         }

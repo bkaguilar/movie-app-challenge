@@ -2,7 +2,7 @@ import React, { useReducer, useState } from 'react';
 import Link from 'next/link';
 import Cover from '../assets/cinema-svg.svg';
 import Warning from '../assets/warning.svg';
-import { BORDER, COLORS, PADDING } from '../styles/variables';
+import { BORDER, COLORS, PADDING, ANIMATION } from '../styles/variables';
 import { API_URL, API_KEY } from '../constants';
 import Layout from '@components/Layout/Layout';
 import Card from '@components/Card/Card';
@@ -56,7 +56,7 @@ const Home: React.FC = () => {
           </figure>
         ) : search ? (
           <>
-            {movies.map((movie: { Title: string; Poster: string }, index: number) => (
+            {movies.map((movie: { Title: string; Poster: string; Year: string }, index: number) => (
               <Link key={index} href="/Movies/[id]" as={`/movies/${movie.Title}`}>
                 <a href={`/movies/${movie.Title}`} className="Home__a">
                   <Card card={movie} />
@@ -87,6 +87,7 @@ const Home: React.FC = () => {
           grid-row: firstline / lastline;
           height: 300px;
           width: 100%;
+          animation: ${ANIMATION.RULE};
         }
 
         .Home__error__text {

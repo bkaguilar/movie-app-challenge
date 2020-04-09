@@ -33,3 +33,7 @@ export const BORDER = {
 export const PADDING = {
   LAYOUT: '50px',
 };
+
+export const ANIMATION = {
+  RULE: 'show 500ms ease-in',
+};
