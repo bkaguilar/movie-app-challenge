@@ -6,6 +6,7 @@ import { BORDER, COLORS, PADDING } from '../styles/variables';
 import { API_URL, API_KEY } from '../constants';
 import Layout from '@components/Layout/Layout';
 import Card from '@components/Card/Card';
+import Spinner from '@components/Spinner/Spinner';
 import { reducer, initialState } from '../reducer';
 
 const Home: React.FC = () => {
@@ -47,15 +48,15 @@ const Home: React.FC = () => {
     <Layout handlerInput={handlerInput}>
       <main className="Home">
         {isLoading ? (
-          <figure className="Spinner">Loading....</figure>
+          <Spinner />
         ) : errorMessage && search ? (
           <figure className="Home__error">
-            <Warning height="100%" width="100%" />
+            <Warning height="60%" width="100%" />
             <p className="Home__error__text">{errorMessage}</p>
           </figure>
         ) : search ? (
           <>
-            {movies.map((movie: { Title: string }, index: number) => (
+            {movies.map((movie: { Title: string; Poster: string }, index: number) => (
               <Link key={index} href="/Movies/[id]" as={`/movies/${movie.Title}`}>
                 <a href={`/movies/${movie.Title}`} className="Home__a">
                   <Card card={movie} />
@@ -65,12 +66,13 @@ const Home: React.FC = () => {
           </>
         ) : (
           <figure className="Home__figure">
-            <Cover height="100%" width="100%" />
+            <Cover height="60%" width="100%" />
           </figure>
         )}
       </main>
       <style jsx>{`
         .Home {
+          min-height: 350px;
           padding: 0 ${PADDING.LAYOUT};
           margin-bottom: 100px;
           display: grid;
@@ -83,7 +85,7 @@ const Home: React.FC = () => {
           place-self: center;
           grid-column: 1 / lastline;
           grid-row: firstline / lastline;
-          height: 400px;
+          height: 300px;
           width: 100%;
         }
 
