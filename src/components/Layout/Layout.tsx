@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children, handlerInput }) => {
       <Header handlerInput={handlerInput} />
       {children}
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@700&family=Roboto:wght@100;400;700&display=swap');
         * {
           margin: 0;
           padding: 0;
@@ -25,12 +25,12 @@ const Layout: React.FC<LayoutProps> = ({ children, handlerInput }) => {
 
         *::-moz-selection {
           color: ${COLORS.WHITE};
-          background: ${COLORS.DARK};
+          background: ${COLORS.MAIN_HIGHLIGHT};
         }
 
         *::selection {
           color: ${COLORS.WHITE};
-          background: ${COLORS.DARK};
+          background: ${COLORS.MAIN_HIGHLIGHT};
         }
 
         body {

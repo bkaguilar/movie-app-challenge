@@ -2,7 +2,7 @@ import React, { useReducer, useState } from 'react';
 import Link from 'next/link';
 import Cover from '../assets/cinema-svg.svg';
 import Warning from '../assets/warning.svg';
-import { BORDER, COLORS } from '../styles/variables';
+import { BORDER, COLORS, PADDING } from '../styles/variables';
 import { API_URL, API_KEY } from '../constants';
 import Layout from '@components/Layout/Layout';
 import Card from '@components/Card/Card';
@@ -57,7 +57,7 @@ const Home: React.FC = () => {
           <>
             {movies.map((movie: { Title: string }, index: number) => (
               <Link key={index} href="/Movies/[id]" as={`/movies/${movie.Title}`}>
-                <a href={`/movies/${movie.Title}`}>
+                <a href={`/movies/${movie.Title}`} className="Home__a">
                   <Card card={movie} />
                 </a>
               </Link>
@@ -71,6 +71,8 @@ const Home: React.FC = () => {
       </main>
       <style jsx>{`
         .Home {
+          padding: 0 ${PADDING.LAYOUT};
+          margin-bottom: 100px;
           display: grid;
           grid-gap: 25px;
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -79,8 +81,8 @@ const Home: React.FC = () => {
         .Home__figure,
         .Home__error {
           place-self: center;
-          grid-column: 2 / 5;
-          grid-row: 1 / lastline;
+          grid-column: 1 / lastline;
+          grid-row: firstline / lastline;
           height: 400px;
           width: 100%;
         }
@@ -96,6 +98,10 @@ const Home: React.FC = () => {
           margin-top: 40px;
           padding: 10px;
           background: ${COLORS.MAIN_HIGHLIGHT_ALPHA};
+        }
+
+        .Home__a {
+          place-self: center;
         }
       `}</style>
     </Layout>

@@ -29,3 +29,7 @@ export const TRANSITION = {
 export const BORDER = {
   RADIUS: '3px',
 };
+
+export const PADDING = {
+  LAYOUT: '50px',
+};

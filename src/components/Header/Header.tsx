@@ -1,5 +1,5 @@
 import SearchIcon from '../../assets/icons/search.svg';
-import { FONT, COLORS, BORDER, TRANSITION } from '../../styles/variables';
+import { FONT, COLORS, BORDER, TRANSITION, PADDING } from '../../styles/variables';
 
 type HeaderProps = {
   handlerInput(event: React.ChangeEvent<HTMLInputElement>): void;
@@ -8,7 +8,8 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ handlerInput }) => {
   return (
     <header className="Header">
-      <figure className="Header__figure"></figure>
+      <h1 className="Header__title">Find and discover movies</h1>
+      <p className="Header__subtitle">In this aplication you can search a movie and add it to favourites one.</p>
       <div className="Header__search">
         <span className="Header__search__icon">
           <SearchIcon fill={COLORS.SECONDARY} width="24px" height="100%" />
@@ -23,8 +24,24 @@ const Header: React.FC<HeaderProps> = ({ handlerInput }) => {
       </div>
       <style jsx>{`
         .Header {
-          height: 120px;
-          padding: 10px;
+          min-height: 120px;
+          padding: ${PADDING.LAYOUT};
+          margin-bottom: 100px;
+          text-align: center;
+        }
+
+        .Header__title {
+          font-family: 'Bitter', serif;
+          font-size: 4vmax;
+          line-height: 1;
+          width: 60%;
+          margin: 50px auto 20px auto;
+          padding: 20px;
+        }
+
+        .Header__subtitle {
+          color: ${COLORS.DARK_ALPHA};
+          margin-bottom: 50px;
         }
 
         .Header__search {
@@ -38,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ handlerInput }) => {
           height: 24px;
           margin: 0 7px;
           padding-right: 2px;
-          border-right: 1px solid ${COLORS.SECONDARY};
+          border-right: 1px solid ${COLORS.DARK_ALPHA};
           display: inline-block;
           pointer-events: none;
         }

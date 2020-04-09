@@ -20,7 +20,7 @@ const Card: React.FC<CardProps> = ({ card }) => {
           // box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.2);
           background: url('${posterPlaceholder}');
           background-size: cover;
-          transition: ${TRANSITION.SMOOTH}
+          transition: ${TRANSITION.SMOOTH};
         }
 
         .Card:hover {

@@ -4,6 +4,12 @@
     "import-name": false,
     "align": false,
     "react-hooks-nesting": true,
+    "max-line-length": [
+      true,
+      {
+        "limit": 120
+      }
+    ],
     "function-name": [
       true,
       {
@@ -15,12 +21,7 @@
       }
     ],
     "variable-name": {
-      "options": [
-        "ban-keywords",
-        "check-format",
-        "allow-leading-underscore",
-        "allow-pascal-case"
-      ]
+      "options": ["ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
     }
   }
 }
