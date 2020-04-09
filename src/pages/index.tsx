@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import Link from 'next/link';
 import { API_URL, API_KEY } from '../constants';
 import Layout from '@components/Layout/Layout';
 import Card from '@components/Card/Card';
+import { reducer } from '../reducer';
+
+interface Istate {
+  isLoading: boolean;
+  movies: [];
+  errorMessage: null | string;
+  page: number;
+}
+
+const initialState: Istate = {
+  isLoading: false,
+  movies: [],
+  errorMessage: null,
+  page: 1,
+};
 
 const Home: React.FC = () => {
-  const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [page, setPage] = useState(1);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { movies, errorMessage, isLoading, page } = state;
 
   const handlerInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.currentTarget.value);
@@ -17,21 +30,28 @@ const Home: React.FC = () => {
   };
 
   const fetchData = async () => {
-    setIsLoading(true);
+    dispatch({
+      type: 'SEARCH_MOVIES_REQUEST',
+    });
+
     const params = {
       method: 'GET',
     };
+
     const response = await fetch(`${API_URL}/?s=${search}${API_KEY}&page=${page}`, params);
     response.json().then((data) => {
       if (data.Response === 'True') {
-        setErrorMessage(null);
-        setMovies(data.Search);
+        dispatch({
+          type: 'SEARCH_MOVIES_SUCCESS',
+          payload: data.Search,
+        });
       } else {
-        setMovies([]);
-        setErrorMessage(data.Error);
+        dispatch({
+          type: 'SEARCH_MOVIES_FAILURE',
+          error: data.Error,
+        });
       }
     });
-    setIsLoading(false);
   };
 
   return (
