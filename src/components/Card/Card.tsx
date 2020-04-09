@@ -1,8 +1,10 @@
 import { FONT, COLORS, BORDER, TRANSITION } from '../../styles/variables';
-import { DEFAULT_POSTER_PLACEHOLDER } from 'src/constants';
+import { DEFAULT_POSTER_PLACEHOLDER } from '../../constants';
 
 type CardProps = {
-  card: any;
+  card: {
+    Poster: string;
+  };
 };
 
 const Card: React.FC<CardProps> = ({ card }) => {
