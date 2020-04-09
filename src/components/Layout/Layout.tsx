@@ -33,6 +33,19 @@ const Layout: React.FC<LayoutProps> = ({ children, handlerInput }) => {
           background: ${COLORS.MAIN_HIGHLIGHT};
         }
 
+        ::-webkit-scrollbar {
+          width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: ${COLORS.MAIN_HIGHLIGHT};
+          border-radius: 10px;
+        }
+
         body {
           max-width: ${LAYOUT.MAX_WIDTH};
           margin: 0 auto;
