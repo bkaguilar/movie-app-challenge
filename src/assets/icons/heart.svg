@@ -1,15 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
-    <title>icon-heart-white</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Styleguide-presentation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="8.icons" transform="translate(-530.000000, -344.000000)">
-            <g id="icon-heart-white" transform="translate(530.000000, 344.000000)">
-                <rect id="Rectangle-13" x="0" y="0" width="24" height="24"></rect>
-                <path d="M12,5.7384007 C24.3159972,-3.87751835 26.3133219,14.4898505 12,20 C-2.31332192,15.570284 -0.31599724,-3.87751835 12,5.7384007 Z" id="Rectangle-12" stroke="#FFFFFF" stroke-width="2"></path>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="18px" height="18px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19.66 3.99c-2.64-1.8-5.9-.96-7.66 1.1-1.76-2.06-5.02-2.91-7.66-1.1-1.4.96-2.28 2.58-2.34 4.29-.14 3.88 3.3 6.99 8.55 11.76l.1.09c.76.69 1.93.69 2.69-.01l.11-.1c5.25-4.76 8.68-7.87 8.55-11.75-.06-1.7-.94-3.32-2.34-4.28zM12.1 18.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg>
