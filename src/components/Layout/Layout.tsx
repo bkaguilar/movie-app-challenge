@@ -1,15 +1,12 @@
 import { FONT, COLORS, LAYOUT } from '../../styles/variables';
-import Header from '@components/Header/Header';
 
 type LayoutProps = {
   children: React.ReactNode;
-  handlerInput(event: React.ChangeEvent<HTMLInputElement>): void;
 };
 
-const Layout: React.FC<LayoutProps> = ({ children, handlerInput }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <Header handlerInput={handlerInput} />
       {children}
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@700&family=Roboto:wght@100;400;700&display=swap');

@@ -7,6 +7,7 @@ import { API_URL, API_KEY } from '../constants';
 import Layout from '@components/Layout/Layout';
 import Card from '@components/Card/Card';
 import Spinner from '@components/Spinner/Spinner';
+import Header from '@components/Header/Header';
 import { reducer, initialState } from '../reducer';
 
 const Home: React.FC = () => {
@@ -35,7 +36,6 @@ const Home: React.FC = () => {
           type: 'SEARCH_MOVIES_SUCCESS',
           payload: data.Search,
         });
-        console.log(data);
       } else {
         dispatch({
           type: 'SEARCH_MOVIES_FAILURE',
@@ -46,7 +46,8 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Layout handlerInput={handlerInput}>
+    <Layout>
+      <Header handlerInput={handlerInput} />
       <main className="Home">
         {isLoading ? (
           <Spinner />
