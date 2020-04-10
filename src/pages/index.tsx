@@ -73,8 +73,7 @@ const Home: React.FC = () => {
       <style jsx>{`
         .Home {
           min-height: 350px;
-          padding: 0 ${PADDING.LAYOUT};
-          margin-bottom: 100px;
+          padding: 50px ${PADDING.LAYOUT} 100px ${PADDING.LAYOUT};
           display: grid;
           grid-gap: 25px;
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -91,7 +90,7 @@ const Home: React.FC = () => {
         }
 
         .Home__error__text {
-          width: 70%;
+          width: 50%;
           margin: 0 auto;
           border-radius: ${BORDER.RADIUS};
           color: ${COLORS.MAIN_HIGHLIGHT};
