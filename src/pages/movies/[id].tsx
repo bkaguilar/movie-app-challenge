@@ -1,10 +1,12 @@
 import fetch from 'isomorphic-unfetch';
+import Link from 'next/link';
 import { NextPage, NextPageContext } from 'next';
 import Layout from '@components/Layout/Layout';
-import { FONT, BORDER, COLORS, PADDING, ANIMATION, SHADOW } from '../../styles/variables';
-import { API_KEY, API_URL } from '../../constants';
+import { FONT, COLORS, PADDING, SHADOW, BORDER, TRANSITION } from '../../styles/variables';
+import { API_KEY, API_URL, DEFAULT_POSTER_PLACEHOLDER } from '../../constants';
 import Button from '@components/Button/Button';
-import { Children } from 'react';
+import Heart from '../../assets/icons/heart.svg';
+import Arrow from '../../assets/icons/arrow.svg';
 
 type MovieProps = {
   movie: {
@@ -27,17 +29,23 @@ type MovieProps = {
 };
 
 const Movie: NextPage<MovieProps> = ({ movie }) => {
+  const posterPlaceholder = movie.Poster === 'N/A' ? DEFAULT_POSTER_PLACEHOLDER : movie.Poster;
   return (
     <Layout>
       <header className="Movie__header">
-        <a href="">back</a>
+        <Link href="/">
+          <a href="/" className="Movie__header__back">
+            <Arrow className="ArrowIcon" fill={COLORS.MAIN_HIGHLIGHT} width="24px" />
+            back
+          </a>
+        </Link>
       </header>
       <main className="Movie__main">
         <figure className="Movie__cover">
-          <img src={movie.Poster} alt={movie.Title} title={movie.Title} />
+          <img src={posterPlaceholder} alt={movie.Title} title={movie.Title} />
         </figure>
+        <h1 className="Movie__title">{movie.Title}</h1>
         <div className="Movie__information">
-          <h1 className="Movie__title">{movie.Title}</h1>
           <section className="Movie__information__section">
             <Item label="duration" content={movie.Runtime} />
             <Item label="year" content={movie.Year} />
@@ -45,8 +53,14 @@ const Movie: NextPage<MovieProps> = ({ movie }) => {
           </section>
           <section className="Movie__information__section">
             <Item label="IMDb Rating" content={movie.imdbRating} />
-            <Button value="Add to favourites" icon="<3" className="Button--movie" />
           </section>
+          <Button
+            value="Add to favourites"
+            activeValue="Added"
+            icon={<Heart />}
+            className="Button--movie"
+            title="Add"
+          />
           <section className="Movie__information__section">
             <Item label="plot" content={movie.Plot} paragraph />
           </section>
@@ -58,20 +72,44 @@ const Movie: NextPage<MovieProps> = ({ movie }) => {
       <style jsx>{`
         .Movie__header,
         .Movie__main {
-          padding: ${PADDING.LAYOUT};
+          padding: 30px ${PADDING.LAYOUT};
+        }
+
+        .Movie__header__back {
+          width: 110px;
+          padding: 10px;
+          border-radius: ${BORDER.RADIUS};
+          text-transform: uppercase;
+          color: ${COLORS.DARK};
+          font-weight: bold;
+          transition: ${TRANSITION.LINEAR};
+          display: flex;
+          align-items:center;
+          justify-content: space-around;
+        }
+
+        .Movie__header__back:hover {
+          background: ${COLORS.MAIN_HIGHLIGHT_ALPHA};
+          color: ${COLORS.MAIN_HIGHLIGHT};
         }
 
         .Movie__main {
           display: grid;
           grid-template-columns: 1fr 2fr;
-          grid-template-rows: auto;
-          grid-auto-flow: row;
+          grid-template-rows: auto auto;
           grid-gap: 20px;
-          // grid-template-areas: 'sidebar cover';
+          grid-template-areas:
+            "poster title"
+            "poster content";
         }
 
         .Movie__cover {
-          width: 400px;
+          grid-area: poster;
+          place-self:center;
+          width: 100%;
+          height: 100%;
+          border-radius: ${BORDER.RADIUS};
+          overflow: hidden;
           box-shadow: ${SHADOW.BLACK};
         }
 
@@ -81,22 +119,52 @@ const Movie: NextPage<MovieProps> = ({ movie }) => {
           object-fit: cover;
         }
 
-        .Movie__information {
+        .Movie__title {
+          grid-area: title;
+          font-family: ${FONT.BITTER}
+          font-size: 3em;
+          line-height: 1;
           padding: 0 10px 0 50px;
         }
 
-        .Movie__title {
-          font-family: ${FONT.BITTER}
-          font-size: 4em;
-          line-height: 1;
-          margin-bottom: 50px;
+        .Movie__information {
+          grid-area: content;
+          padding: 0 10px 0 50px;
         }
 
         .Movie__information__section {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
           margin-bottom: 20px;
         }
+
+        @media only screen and (max-width: 768px) {
+          .Movie__main, .Movie__header {
+            padding: 10px;
+          }
+
+          .Movie__main {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+            grid-template-areas:
+            "title"
+            "poster"
+            "content";
+          }
+
+          .Movie__title{
+            text-align: center;
+          }
+
+          .Movie__title, .Movie__information {
+            padding: 10px;
+          }
+
+          .Movie__cover {
+            width: 250px;
+          }
+         }
       `}</style>
     </Layout>
   );
@@ -138,8 +206,14 @@ const Item: React.FC<ItemProps> = ({ label, content, paragraph = false }) => {
           }
 
           .Item__content--paragraph {
-            font-size: 1.2em;
+            font-size: 1.1em;
             text-align: justify;
+          }
+
+          @media only screen and (max-width: 768px) {
+            .Item {
+              margin: 10px;
+            }
           }
         `}
       </style>

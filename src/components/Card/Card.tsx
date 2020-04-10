@@ -34,6 +34,7 @@ const Card: React.FC<CardProps> = ({ card }) => {
           width: 100%;
           margin: 0 auto;
           border-radius: ${BORDER.RADIUS};
+          overflow: hidden;
           box-shadow: ${SHADOW.BLACK};
           transition: ${TRANSITION.SMOOTH};
         }
