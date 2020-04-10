@@ -26,7 +26,6 @@ const Header: React.FC<HeaderProps> = ({ handlerInput }) => {
         .Header {
           min-height: 120px;
           padding: ${PADDING.LAYOUT};
-          margin-bottom: 100px;
           text-align: center;
         }
 

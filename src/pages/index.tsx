@@ -28,13 +28,14 @@ const Home: React.FC = () => {
       method: 'GET',
     };
 
-    const response = await fetch(`${API_URL}/?s=${search}${API_KEY}&page=${page}`, params);
+    const response = await fetch(`${API_URL}?s=${search}${API_KEY}&page=${page}`, params);
     response.json().then((data) => {
       if (data.Response === 'True') {
         dispatch({
           type: 'SEARCH_MOVIES_SUCCESS',
           payload: data.Search,
         });
+        console.log(data);
       } else {
         dispatch({
           type: 'SEARCH_MOVIES_FAILURE',
@@ -56,8 +57,8 @@ const Home: React.FC = () => {
           </figure>
         ) : search ? (
           <>
-            {movies.map((movie: { Title: string; Poster: string; Year: string }, index: number) => (
-              <Link key={index} href="/Movies/[id]" as={`/movies/${movie.Title}`}>
+            {movies.map((movie: { Title: string; Poster: string; Year: string; imdbID: string }, index: number) => (
+              <Link key={index} href="/movies/[id]" as={`/movies/${movie.imdbID}`}>
                 <a href={`/movies/${movie.Title}`} className="Home__a">
                   <Card card={movie} />
                 </a>
@@ -73,8 +74,7 @@ const Home: React.FC = () => {
       <style jsx>{`
         .Home {
           min-height: 350px;
-          padding: 0 ${PADDING.LAYOUT};
-          margin-bottom: 100px;
+          padding: 50px ${PADDING.LAYOUT} 100px ${PADDING.LAYOUT};
           display: grid;
           grid-gap: 25px;
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -91,7 +91,7 @@ const Home: React.FC = () => {
         }
 
         .Home__error__text {
-          width: 70%;
+          width: 50%;
           margin: 0 auto;
           border-radius: ${BORDER.RADIUS};
           color: ${COLORS.MAIN_HIGHLIGHT};

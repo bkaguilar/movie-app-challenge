@@ -18,7 +18,7 @@ export const FONT = {
 };
 
 export const LAYOUT = {
-  MAX_WIDTH: '1100px',
+  MAX_WIDTH: '1200px',
 };
 
 export const TRANSITION = {
