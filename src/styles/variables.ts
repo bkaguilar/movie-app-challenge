@@ -1,6 +1,6 @@
 export const COLORS = {
   MAIN_HIGHLIGHT: '#f9a826',
-  MAIN_NEGATIVE: '#FF4040',
+  MAIN_NEGATIVE: '#F7797A',
   MAIN_ACTIVE: '#2EC4B6',
   DISABLED: '#353F4C',
   SECONDARY: '#7A8C99',
@@ -14,7 +14,8 @@ export const COLORS = {
 };
 
 export const FONT = {
-  FAMILY: "'Roboto', sans-serif",
+  ROBOTO: "'Roboto', sans-serif",
+  BITTER: "'Bitter', serif;",
 };
 
 export const LAYOUT = {
@@ -36,4 +37,8 @@ export const PADDING = {
 
 export const ANIMATION = {
   RULE: 'show 500ms ease-in',
+};
+
+export const SHADOW = {
+  BLACK: '0 10px 15px -5px rgba(0, 0, 0, 0.4)',
 };

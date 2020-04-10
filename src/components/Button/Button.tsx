@@ -1,10 +1,16 @@
 import { COLORS, TRANSITION, BORDER } from '../../styles/variables';
 
-const Button = (props) => {
+type ButtonProps = {
+  className: string;
+  value: string;
+  icon: string;
+};
+
+const Button: React.FC<ButtonProps> = ({ className, value, icon }) => {
   return (
-    <button className={`Button ${props.className}`}>
-      <span className="Button__icon">{props.icon}</span>
-      {props.value}
+    <button className={`Button ${className}`}>
+      <span className="Button__icon">{icon}</span>
+      {value}
       <style jsx>
         {`
           .Button {

@@ -14,7 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-          font-family: ${FONT.FAMILY};
+          font-family: ${FONT.ROBOTO};
           scroll-behavior: smooth;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;

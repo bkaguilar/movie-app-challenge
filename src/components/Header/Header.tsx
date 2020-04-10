@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ handlerInput }) => {
         }
 
         .Header__title {
-          font-family: 'Bitter', serif;
+          font-family: ${FONT.BITTER}
           font-size: 4vmax;
           line-height: 1;
           width: 70%;
@@ -76,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ handlerInput }) => {
         .Header__search__input::placeholder {
           font-size: 1.2em;
           color: ${COLORS.SECONDARY};
-          font-family: ${FONT.FAMILY};
+          font-family: ${FONT.ROBOTO};
         }
       `}</style>
     </header>

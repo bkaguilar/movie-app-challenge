@@ -1,4 +1,4 @@
-import { FONT, COLORS, BORDER, TRANSITION, ANIMATION } from '../../styles/variables';
+import { SHADOW, COLORS, BORDER, TRANSITION, ANIMATION } from '../../styles/variables';
 import { DEFAULT_POSTER_PLACEHOLDER } from '../../constants';
 
 type CardProps = {
@@ -34,7 +34,7 @@ const Card: React.FC<CardProps> = ({ card }) => {
           width: 100%;
           margin: 0 auto;
           border-radius: ${BORDER.RADIUS};
-          box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.4);
+          box-shadow: ${SHADOW.BLACK};
           transition: ${TRANSITION.SMOOTH};
         }
 
