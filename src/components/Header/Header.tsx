@@ -78,6 +78,15 @@ const Header: React.FC<HeaderProps> = ({ handlerInput }) => {
           color: ${COLORS.SECONDARY};
           font-family: ${FONT.ROBOTO};
         }
+
+        @media only screen and (max-width: 768px) {
+          .Header {
+            padding: 10px;
+          }
+          .Header__title {
+            width: 100%;
+          }
+        }
       `}</style>
     </header>
   );

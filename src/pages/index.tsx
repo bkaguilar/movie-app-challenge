@@ -107,6 +107,17 @@ const Home: React.FC = () => {
         .Home__a {
           place-self: center;
         }
+
+        @media only screen and (max-width: 768px) {
+          .Home {
+            padding: 10px;
+          }
+
+          .Home__error__text {
+            width: 100%;
+            font-size: 1em;
+          }
+        }
       `}</style>
     </Layout>
   );
