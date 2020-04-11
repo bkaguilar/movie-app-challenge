@@ -9,7 +9,7 @@ const Header: React.FC<HeaderProps> = ({ handlerInput }) => {
   return (
     <header className="Header">
       <h1 className="Header__title">Find and discover movies</h1>
-      <p className="Header__subtitle">In this aplication you can search a movie and add it to favourites one.</p>
+      <p className="Header__subtitle">In this application you can search a movie and add to favourites one.</p>
       <div className="Header__search">
         <span className="Header__search__icon">
           <SearchIcon fill={COLORS.SECONDARY} width="24px" height="100%" />
