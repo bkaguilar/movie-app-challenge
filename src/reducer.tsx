@@ -4,7 +4,7 @@ export const initialState: Istate = {
   movies: [],
   isLoading: false,
   errorMessage: null,
-  page: 1,
+  totalResult: 0,
 };
 
 export const reducer = (state: Istate, action: Iaction): Istate => {
@@ -13,11 +13,13 @@ export const reducer = (state: Istate, action: Iaction): Istate => {
       return {
         ...state,
         isLoading: true,
+        totalResult: 0,
         errorMessage: null,
       };
     case 'SEARCH_MOVIES_SUCCESS':
       return {
         ...state,
+        totalResult: action.total!,
         isLoading: false,
         movies: action.payload!,
       };

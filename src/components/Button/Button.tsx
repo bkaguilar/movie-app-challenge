@@ -7,7 +7,6 @@ type ButtonProps = {
   activeValue: string;
   icon: React.ReactNode;
   title: string;
-  handlerHove?: () => void;
 };
 
 const Button: React.FC<ButtonProps> = ({ className, value, activeValue, icon, title }) => {

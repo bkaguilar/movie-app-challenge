@@ -1,26 +1,33 @@
 import Arrow from '../../assets/icons/arrow.svg';
-import { COLORS, BORDER, TRANSITION, ANIMATION, PADDING } from '../../styles/variables';
+import { COLORS, BORDER, TRANSITION, PADDING } from '../../styles/variables';
 
-type PaginationProps = {};
+type PaginationProps = {
+  showPrevLink: boolean;
+  showNextLink: boolean;
+  handlerPage(num: number): void;
+};
 
-const Pagination = () => {
+const Pagination: React.FC<PaginationProps> = ({ showPrevLink, showNextLink, handlerPage }) => {
   return (
     <div className="Pagination">
-      <a href="" className="Pagination__anchor Pagination__anchor--prev" title="Prev Page">
-        <Arrow className="ArrowIcon" fill={COLORS.MAIN_HIGHLIGHT} width="16px" stroke={COLORS.MAIN_HIGHLIGHT} />
-        Prev
-      </a>
-      <a href="" className="Pagination__anchor Pagination__anchor--next" title="Next Page">
-        Next
-        <Arrow
-          className="ArrowIcon"
-          fill={COLORS.MAIN_HIGHLIGHT}
-          width="16px"
-          stroke={COLORS.MAIN_HIGHLIGHT}
-          style={{ transform: 'rotate(180deg)' }}
-        />
-      </a>
+      {showPrevLink && (
+        <span onClick={() => handlerPage(-1)} className="Pagination__link Pagination__link--prev" title="Prev Page">
+          <Arrow fill={COLORS.MAIN_HIGHLIGHT} width="16px" stroke={COLORS.MAIN_HIGHLIGHT} />
+          Prev
+        </span>
+      )}
 
+      {showNextLink && (
+        <span onClick={() => handlerPage(+1)} className="Pagination__link Pagination__link--next" title="Next Page">
+          Next
+          <Arrow
+            fill={COLORS.MAIN_HIGHLIGHT}
+            width="16px"
+            stroke={COLORS.MAIN_HIGHLIGHT}
+            style={{ transform: 'rotate(180deg)' }}
+          />
+        </span>
+      )}
       <style jsx>{`
         .Pagination {
           display: flex;
@@ -29,7 +36,8 @@ const Pagination = () => {
           padding: 0 ${PADDING.LAYOUT};
         }
 
-        .Pagination__anchor {
+        .Pagination__link {
+          cursor: pointer;
           width: 80px;
           padding: 5px 7px;
           margin: 0 5px;
@@ -45,7 +53,7 @@ const Pagination = () => {
           align-items: center;
         }
 
-        .Pagination__anchor:hover {
+        .Pagination__link:hover {
           background: ${COLORS.MAIN_HIGHLIGHT_ALPHA};
         }
       `}</style>

@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Cover from '../assets/cinema-svg.svg';
 import Warning from '../assets/warning.svg';
@@ -8,34 +8,47 @@ import Layout from '@components/Layout/Layout';
 import Card from '@components/Card/Card';
 import Spinner from '@components/Spinner/Spinner';
 import Header from '@components/Header/Header';
+import Pagination from '@components/Pagination/Pagination';
 import { reducer, initialState } from '../reducer';
 
 const Home: React.FC = () => {
   const [search, setSearch] = useState('');
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { movies, errorMessage, isLoading, page } = state;
+  const [page, setPage] = useState(1);
+  const { movies, errorMessage, isLoading, totalResult } = state;
 
   const handlerInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.currentTarget.value);
     fetchData();
   };
 
+  const totalPages = () => {
+    return Math.ceil(totalResult / 10);
+  };
+
+  const handlerPage = (num: number) => {
+    setPage((prevPage) => {
+      return prevPage + num;
+    });
+  };
+
   const fetchData = async () => {
+    const controller = new AbortController();
+    const { signal } = controller;
+
     dispatch({
       type: 'SEARCH_MOVIES_REQUEST',
     });
 
-    const params = {
-      method: 'GET',
-    };
-
-    const response = await fetch(`${API_URL}?s=${search}${API_KEY}&page=${page}`, params);
+    const response = await fetch(`${API_URL}?s=${search}${API_KEY}&page=${page}`, { signal });
     response.json().then((data) => {
       if (data.Response === 'True') {
         dispatch({
           type: 'SEARCH_MOVIES_SUCCESS',
+          total: data.totalResults,
           payload: data.Search,
         });
+        controller.abort();
       } else {
         dispatch({
           type: 'SEARCH_MOVIES_FAILURE',
@@ -45,9 +58,14 @@ const Home: React.FC = () => {
     });
   };
 
+  useEffect(() => {
+    fetchData();
+  }, [page]);
+
   return (
     <Layout>
       <Header handlerInput={handlerInput} />
+      <Pagination showPrevLink={page > 1} showNextLink={totalPages() > page} handlerPage={handlerPage} />
       <main className="Home">
         {isLoading ? (
           <Spinner />
@@ -74,7 +92,7 @@ const Home: React.FC = () => {
       </main>
       <style jsx>{`
         .Home {
-          min-height: 350px;
+          min-height: 550px;
           padding: 50px ${PADDING.LAYOUT} 100px ${PADDING.LAYOUT};
           display: grid;
           grid-gap: 25px;
